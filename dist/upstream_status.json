@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 16:26:59",
+  "last_updated": "2026-10-23 16:45:09",
   "total": 9,
   "results": [
     {
@@ -7,72 +7,72 @@
       "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 21,
-      "check_time": "2026-10-23 16:26:51"
-    },
-    {
-      "name": "🍚 饭太硬 官方主力线",
-      "url": "http://xn--sss604efuw.top/tv",
-      "status": "online",
-      "code": 200,
       "latency_ms": 58,
-      "check_time": "2026-10-23 16:26:51"
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 60,
-      "check_time": "2026-10-23 16:26:51"
+      "latency_ms": 108,
+      "check_time": "2026-10-23 16:45:01"
+    },
+    {
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://xn--sss604efuw.top/tv",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 149,
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 96,
-      "check_time": "2026-10-23 16:26:51"
+      "latency_ms": 161,
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 464,
-      "check_time": "2026-10-23 16:26:51"
+      "latency_ms": 579,
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 3500,
-      "check_time": "2026-10-23 16:26:54"
+      "latency_ms": 3869,
+      "check_time": "2026-10-23 16:45:05"
     },
     {
       "name": "🐟 摸鱼儿 影视专线",
       "url": "http://xn--070az07b.xn--fiq52l96f.top",
       "status": "offline",
       "error": "<urlopen error [Errno -2] Name or service not known>",
-      "latency_ms": 16,
-      "check_time": "2026-10-23 16:26:51"
+      "latency_ms": 54,
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "👌 OK影视 官方线路",
       "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
       "status": "offline",
       "error": "HTTP Error 401: Unauthorized",
-      "latency_ms": 816,
-      "check_time": "2026-10-23 16:26:52"
+      "latency_ms": 678,
+      "check_time": "2026-10-23 16:45:01"
     },
     {
       "name": "🥑 巧技 备用专线",
       "url": "http://pandown.pro/tvbox/tvbox.json",
       "status": "offline",
       "error": "<urlopen error timed out>",
-      "latency_ms": 8082,
-      "check_time": "2026-10-23 16:26:59"
+      "latency_ms": 8113,
+      "check_time": "2026-10-23 16:45:09"
     }
   ]
 }
