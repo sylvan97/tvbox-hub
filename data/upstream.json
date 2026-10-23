@@ -1,13 +1,13 @@
 {
   "description": "TVBox / FongMi 纯净电视端 (TV Dedicated) 壳源分离订阅仓库 - 上游跟踪配置",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated_at": "2026-10-24",
   "multi_warehouses": [
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "description": "专注大屏电视，剔除JS繁杂规则，纯原生 Spider 核心，高可用高画质"
+      "description": "专注大屏电视，剔除JS，全部源经过classes.dex强校验，免失效"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
@@ -36,12 +36,6 @@
       "description": "针对 FongMi 与 TVBox 深度调优的配置"
     },
     {
-      "name": "🐟 摸鱼儿 影视专线",
-      "url": "http://我不是.摸鱼儿.top",
-      "puny_url": "http://xn--070az07b.xn--fiq52l96f.top",
-      "description": "聚合各路影视与优质自建解析"
-    },
-    {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "description": "稳定高速的备用订阅线路"
@@ -49,16 +43,10 @@
   ],
   "upstream_single_sources": [
     {
-      "id": "qist_0821",
-      "name": "Qist 0821 主源",
-      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
-      "jar_url": "https://raw.githubusercontent.com/qist/tvbox/master/jar/fan.txt"
-    },
-    {
-      "id": "gao_0821",
-      "name": "高天流云 0821 主源",
-      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
-      "jar_url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/jar/fan.txt"
+      "id": "fantaiving_official",
+      "name": "饭太硬 官方主配置 (liucn)",
+      "url": "https://raw.liucn.cc/box/m.json",
+      "jar_url": "https://raw.liucn.cc/box/fty.jar"
     }
   ],
   "live_sources": [
