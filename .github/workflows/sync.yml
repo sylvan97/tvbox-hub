@@ -23,7 +23,7 @@ jobs:
       - name: 检出仓库代码
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: 设置 Python 运行环境
         uses: actions/setup-python@v5
@@ -43,5 +43,6 @@ jobs:
             echo "没有检测到内容变化，跳过提交。"
           else
             git commit -m "chore(auto): 定时同步上游源并更新探活报告 [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
