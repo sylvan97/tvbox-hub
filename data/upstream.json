@@ -1,26 +1,20 @@
 {
-  "description": "TVBox / FongMi 壳源分离订阅仓库 - 上游跟踪源配置",
-  "version": "1.0.0",
+  "description": "TVBox / FongMi 纯净电视端 (TV Dedicated) 壳源分离订阅仓库 - 上游跟踪配置",
+  "version": "2.0.0",
   "updated_at": "2026-10-24",
   "multi_warehouses": [
     {
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐)",
+      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "description": "本仓库本地化镜像维护的精选单仓，去广告、高可用、自动探活"
-    },
-    {
-      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错)",
-      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
-      "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
-      "description": "纯净 CMS 与 JS 规则，专为 Windows/Mac 桌面播放器定制，100% 兼容无安卓弹错"
+      "description": "专注大屏电视，剔除JS繁杂规则，纯原生 Spider 核心，高可用高画质"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
       "url": "http://饭太硬.top/tv",
       "puny_url": "http://xn--sss604efuw.top/tv",
       "backup_url": "https://raw.liucn.cc/box/m.json",
-      "description": "全网最活跃的主力源之一，涵盖主流影视站点与阿里/夸克网盘"
+      "description": "全网最活跃的电视主力源之一，涵盖主流影视站点与阿里/夸克网盘"
     },
     {
       "name": "🐱 肥猫 官方主力线",
@@ -51,16 +45,6 @@
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "description": "稳定高速的备用订阅线路"
-    },
-    {
-      "name": "👌 OK影视 官方线路",
-      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
-      "description": "极狐 GitLab 镜像托管的 OK 影视专属配置"
-    },
-    {
-      "name": "🥑 巧技 备用专线",
-      "url": "http://pandown.pro/tvbox/tvbox.json",
-      "description": "网盘资源与常规站点聚合"
     }
   ],
   "upstream_single_sources": [
@@ -79,13 +63,14 @@
   ],
   "live_sources": [
     {
-      "name": "范明明 IPv6 央卫视高清直播",
-      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
-      "mirror": "https://live.fanmingming.com/tv/m3u/ipv6.m3u"
+      "name": "Guovin 每日探活高可用综合直播源 (TXT格式，电视首选)",
+      "url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.txt",
+      "target_file": "live.txt"
     },
     {
-      "name": "YanG-1989 综合直播源",
-      "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"
+      "name": "Guovin 每日探活高可用综合直播源 (M3U格式)",
+      "url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+      "target_file": "live.m3u"
     }
   ]
 }

@@ -2,19 +2,11 @@
   "urls": [
     {
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐)"
+      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)"
     },
     {
       "url": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐) (加速节点)"
-    },
-    {
-      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
-      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错)"
-    },
-    {
-      "url": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
-      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错) (加速节点)"
+      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护) (加速节点)"
     },
     {
       "url": "http://饭太硬.top/tv",
@@ -47,14 +39,6 @@
     {
       "url": "https://weixine.net/ysc.json",
       "name": "🚗 运输车 聚合专线"
-    },
-    {
-      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
-      "name": "👌 OK影视 官方线路"
-    },
-    {
-      "url": "http://pandown.pro/tvbox/tvbox.json",
-      "name": "🥑 巧技 备用专线"
     }
   ]
 }

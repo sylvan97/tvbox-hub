@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 """
-TVBox-Hub 自动化同步与探活脚本
+TVBox-Hub 纯净电视端 (TV Dedicated) 自动化同步与探活脚本
 功能：
-1. 拉取上游优质开源配置与直播源
-2. 镜像并本地化核心爬虫 Spider Jar 包，生成 MD5 校验
-3. 生成自建聚合单仓 index.json 与极速版 lite.json
-4. 生成多仓合集 multi.json
-5. 执行多仓探活并生成状态报告 upstream_status.json
+1. 专注 TVBox / 影视仓 / FongMi 电视端大屏，彻底剔除所有 JS / drpy 干扰规则
+2. 所有站点强制配置标准化电视分类标签 (categories)，大屏遥控换分类极度舒适
+3. 核心 Spider Jar 镜像缓存 (dist/jar/fan.txt)，绑定 MD5 强校验
+4. 每日同步 Guovin 每日探活高可用国内央卫视直播源 (TXT 格式原生秒切 + M3U 格式)
+5. 生成多仓索引 multi.json 并完成链路健康巡检
 """
 
 import os
@@ -23,14 +23,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 DIST_DIR = os.path.join(BASE_DIR, "dist")
 JAR_DIR = os.path.join(DIST_DIR, "jar")
-LIB_DIR = os.path.join(DIST_DIR, "lib")
-JS_DIR = os.path.join(DIST_DIR, "js")
-
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 TVBox/1.0"
 
@@ -43,12 +39,44 @@ def clean_idn_url(url: str) -> str:
     except Exception:
         return url
 
-def fetch_content(url: str, timeout: int = 12) -> bytes:
+def fetch_content(url: str, timeout: int = 15) -> bytes:
     """带重试与 UA 的通用内容下载"""
     target_url = clean_idn_url(url)
     req = urllib.request.Request(target_url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read()
+
+def enrich_categories(site: dict) -> dict:
+    """为站点配置精准、纯净、结构化的电视端专属 categories 分类标签"""
+    name = site.get("name", "")
+
+    # 1. 看球 / 体育类
+    if any(k in name for k in ["看球", "球", "Jrs", "88", "926"]):
+        site["categories"] = ["足球", "篮球", "NBA", "CBA", "英超", "西甲", "欧冠", "中超"]
+        return site
+
+    # 2. 动漫特化类
+    if any(k in name for k in ["动漫", "Anime", "巴士", "异界"]):
+        site["categories"] = ["连载新番", "完结旧番", "日漫", "国漫", "剧场版", "欧美动漫"]
+        return site
+
+    # 3. 4K 原画 / 网盘搜索 / 磁力类
+    if any(k in name for k in ["玩偶", "盘", "搜", "4K", "磁力", "6V", "AList"]):
+        site["categories"] = ["4K专区", "电影", "电视剧", "国产剧", "欧美剧", "动漫", "综艺", "纪录片"]
+        return site
+
+    # 4. 外剧 / 海外类
+    if any(k in name for k in ["低端", "外剧", "海外"]):
+        site["categories"] = ["美剧", "英剧", "韩剧", "日剧", "电影", "高分经典", "动漫"]
+        return site
+
+    # 5. 常规主流影视 / 采集站默认大屏分类
+    site["categories"] = [
+        "电影", "电视剧", "国产剧", "欧美剧", "韩剧", "日剧",
+        "动作片", "喜剧片", "科幻片", "爱情片", "恐怖片", "战争片",
+        "国产动漫", "日韩动漫", "综艺", "纪录片"
+    ]
+    return site
 
 def test_url_health(name: str, url: str) -> dict:
     """检测 URL 连通性与响应时间"""
@@ -81,8 +109,6 @@ def test_url_health(name: str, url: str) -> dict:
 def sync():
     os.makedirs(DIST_DIR, exist_ok=True)
     os.makedirs(JAR_DIR, exist_ok=True)
-    os.makedirs(LIB_DIR, exist_ok=True)
-    os.makedirs(JS_DIR, exist_ok=True)
 
     upstream_file = os.path.join(DATA_DIR, "upstream.json")
     if not os.path.exists(upstream_file):
@@ -93,10 +119,10 @@ def sync():
         upstream_data = json.load(f)
 
     print("=" * 60)
-    print("▶ 1. 开始同步上游配置、核心 Spider Jar 与 JS 依赖库...")
+    print("▶ 1. 开始同步上游配置与核心 Spider Jar (纯 TV 生态)...")
     print("=" * 60)
 
-    # 1.1 下载 Spider Jar
+    # 1. 下载并更新核心 Spider Jar
     jar_target_path = os.path.join(JAR_DIR, "fan.txt")
     jar_downloaded = False
     jar_md5 = ""
@@ -106,7 +132,7 @@ def sync():
         if not jar_url:
             continue
         try:
-            print(f"[*] 正在拉取 Spider Jar: {jar_url}")
+            print(f"[*] 正在拉取核心 Spider Jar: {jar_url}")
             jar_bytes = fetch_content(jar_url, timeout=20)
             if len(jar_bytes) > 100000:
                 with open(jar_target_path, "wb") as f:
@@ -123,23 +149,7 @@ def sync():
             jar_md5 = hashlib.md5(f.read()).hexdigest()
         print(f"[!] 使用本地已有 Jar, MD5: {jar_md5}")
 
-    # 1.2 镜像通用 JS 爬虫库 (供 PC 端 FreeBox / 桌面端原生加载)
-    js_libs = [
-        ("https://raw.githubusercontent.com/qist/tvbox/master/lib/drpy2.min.js", os.path.join(LIB_DIR, "drpy2.min.js")),
-        ("https://raw.githubusercontent.com/qist/tvbox/master/js/drpy.js", os.path.join(JS_DIR, "drpy.js")),
-    ]
-    for lib_url, lib_dest in js_libs:
-        try:
-            if not os.path.exists(lib_dest):
-                print(f"[*] 正在镜像 JS 依赖库: {lib_url}")
-                lib_data = fetch_content(lib_url, timeout=15)
-                with open(lib_dest, "wb") as f:
-                    f.write(lib_data)
-                print(f"[+] 成功缓存 JS 库: {lib_dest}")
-        except Exception as e:
-            print(f"[-] 缓存 JS 库失败 ({lib_url}): {e}")
-
-    # 2. 拉取主源并构建 index.json
+    # 2. 拉取主源并过滤纯 TV 站点
     base_config = None
     for source in upstream_data.get("upstream_single_sources", []):
         src_url = source.get("url")
@@ -149,87 +159,113 @@ def sync():
             parsed = json.loads(raw_data)
             if "sites" in parsed and len(parsed["sites"]) > 0:
                 base_config = parsed
-                print(f"[+] 成功获取主配置! 包含 {len(base_config['sites'])} 个站点")
+                print(f"[+] 成功获取主配置! 原始包含 {len(base_config['sites'])} 个站点")
                 break
         except Exception as e:
             print(f"[-] 拉取主配置失败: {e}")
 
     if not base_config:
-        print("[!] 无法从上游拉取主配置，生成保底配置模板")
-        base_config = {
-            "spider": f"./jar/fan.txt;md5;{jar_md5}" if jar_md5 else "./jar/fan.txt",
-            "wallpaper": "https://bing.img.run/rand.php",
-            "sites": [],
-            "lives": [],
-            "parses": [],
-            "rules": []
+        print("[!] 无法从上游拉取主配置，退出同步")
+        return
+
+    # 重写 spider 引用为相对路径并绑定 MD5
+    base_config["spider"] = f"./jar/fan.txt;md5;{jar_md5}" if jar_md5 else "./jar/fan.txt"
+    base_config["wallpaper"] = "https://bing.img.run/rand.php"
+    base_config["warningText"] = "TVBox-Hub 纯净电视专版，无JS，全站带 Categories"
+
+    # 纯净 TV 过滤与 categories 结构化增强
+    tv_sites = []
+    for s in base_config.get("sites", []):
+        api = str(s.get("api", ""))
+        ext = str(s.get("ext", ""))
+        name = str(s.get("name", ""))
+
+        # 彻底剔除所有 JS / drpy 干扰项
+        if api.endswith(".js") or "drpy" in api or ext.endswith(".js") or "drpy" in ext:
+            continue
+        # 剔除无效占位站点
+        if "神秘" in name:
+            continue
+
+        # 确保基础交互属性齐全
+        s["searchable"] = s.get("searchable", 1)
+        s["quickSearch"] = s.get("quickSearch", 1)
+        s["filterable"] = s.get("filterable", 1)
+
+        # 统一注入丰富、标准的 categories 分类标签
+        s = enrich_categories(s)
+        tv_sites.append(s)
+
+    # 优化电视端排列顺序：热门 4K 弹幕、经典蓝光站置顶
+    def site_sort_priority(s):
+        name = s.get("name", "")
+        if "玩偶" in name or "4K" in name:
+            return 1
+        if "厂长" in name or "低端" in name:
+            return 2
+        if "原创" in name or "苹果" in name or "糯米" in name or "立播" in name:
+            return 3
+        if "动漫" in name:
+            return 4
+        if "搜" in name or "盘" in name:
+            return 5
+        return 10
+
+    tv_sites.sort(key=site_sort_priority)
+    base_config["sites"] = tv_sites
+    print(f"[+] 处理完成：共保留 {len(tv_sites)} 个纯 TV 原生站点，全部已配备精准 categories 分类！")
+
+    # 绑定高可用直播源：TXT 格式 (电视换台原生格式) + M3U 格式双内置
+    base_config["lives"] = [
+        {
+            "name": "国内高可用央卫视 (自动探活 IPv4/IPv6，TXT原生)",
+            "type": 0,
+            "url": "./live.txt",
+            "playerType": 1
+        },
+        {
+            "name": "全国综合频道 (M3U流媒体)",
+            "type": 0,
+            "url": "./live.m3u",
+            "playerType": 1
         }
-    else:
-        if jar_md5:
-            base_config["spider"] = f"./jar/fan.txt;md5;{jar_md5}"
-        else:
-            base_config["spider"] = "./jar/fan.txt"
+    ]
 
-        base_config["wallpaper"] = "https://bing.img.run/rand.php"
-        base_config["warningText"] = "TVBox-Hub 自动维护节点，仅供学习交流使用"
-
-        # 排序优化：
-        # 1. CMS 采集站 (type 0/1)：纯 HTTP JSON/XML，全端 100% 秒开，排在最前
-        # 2. JS 规则站 (drpy/js)：跨平台脚本支持
-        # 3. Android 专属 (csp_)：保留在后供电视端盒子使用
-        original_sites = base_config.get("sites", [])
-        cms_sites = [s for s in original_sites if s.get("type") in [0, 1]]
-        js_sites = [s for s in original_sites if not str(s.get("api", "")).startswith("csp_") and s.get("type") not in [0, 1]]
-        android_sites = [s for s in original_sites if str(s.get("api", "")).startswith("csp_")]
-
-        base_config["sites"] = cms_sites + js_sites + android_sites
-
-    # 3. 写入综合主仓 dist/index.json
+    # 3. 写入纯净电视主仓 dist/index.json
     index_file = os.path.join(DIST_DIR, "index.json")
     with open(index_file, "w", encoding="utf-8") as f:
         json.dump(base_config, f, ensure_ascii=False, indent=2)
-    print(f"[+] 生成全端综合主仓 (通用站点已置顶): {index_file}")
+    print(f"[+] 生成纯净电视主仓: {index_file}")
 
-    # 4. 生成 PC 专属优化仓 dist/pc.json (过滤所有安卓专用的 csp_ 爬虫，100% PC 兼容)
-    pc_config = dict(base_config)
-    pc_config["sites"] = cms_sites + js_sites
-    pc_file = os.path.join(DIST_DIR, "pc.json")
-    with open(pc_file, "w", encoding="utf-8") as f:
-        json.dump(pc_config, f, ensure_ascii=False, indent=2)
-    print(f"[+] 生成 PC 桌面专用仓: {pc_file} (精选 {len(pc_config['sites'])} 个 PC 原生兼容站点)")
-
-    # 5. 生成极速精简版 dist/lite.json
+    # 4. 生成极速精简版 dist/lite.json (前 20 个核心主力站)
     lite_config = dict(base_config)
-    if "sites" in base_config:
-        lite_config["sites"] = base_config["sites"][:30]
+    lite_config["sites"] = tv_sites[:20]
     lite_file = os.path.join(DIST_DIR, "lite.json")
     with open(lite_file, "w", encoding="utf-8") as f:
         json.dump(lite_config, f, ensure_ascii=False, indent=2)
-    print(f"[+] 生成极速精简配置: {lite_file}")
+    print(f"[+] 生成极速精简仓: {lite_file} (精选 {len(lite_config['sites'])} 个带 categories 主力站)")
 
-    # 5. 同步直播源 dist/live.m3u
+    # 5. 同步与校验真实高可用直播源 (live.txt 与 live.m3u)
     print("\n" + "=" * 60)
-    print("▶ 2. 同步与校验直播源...")
+    print("▶ 2. 同步与校验高可用电视直播源...")
     print("=" * 60)
-    live_downloaded = False
     for live_src in upstream_data.get("live_sources", []):
         url = live_src.get("url")
+        target_name = live_src.get("target_file", "live.txt")
+        target_path = os.path.join(DIST_DIR, target_name)
         try:
-            print(f"[*] 正在拉取直播源: {live_src.get('name')} ({url})")
-            live_bytes = fetch_content(url, timeout=12)
-            if b"#EXTM3U" in live_bytes:
-                live_file = os.path.join(DIST_DIR, "live.m3u")
-                with open(live_file, "wb") as f:
+            print(f"[*] 正在拉取高可用直播源: {live_src.get('name')} ({url})")
+            live_bytes = fetch_content(url, timeout=15)
+            if len(live_bytes) > 1000:
+                with open(target_path, "wb") as f:
                     f.write(live_bytes)
-                print(f"[+] 成功更新直播源: {live_file} ({len(live_bytes)} 字节)")
-                live_downloaded = True
-                break
+                print(f"[+] 成功更新直播源: {target_path} ({len(live_bytes)} 字节)")
         except Exception as e:
-            print(f"[-] 拉取直播源失败: {e}")
+            print(f"[-] 拉取直播源失败 ({target_name}): {e}")
 
-    # 6. 生成多仓索引 dist/multi.json 并进行多仓探活
+    # 6. 生成多仓索引 dist/multi.json 并进行健康探活
     print("\n" + "=" * 60)
-    print("▶ 3. 构建多仓索引并进行健康探活...")
+    print("▶ 3. 构建纯电视多仓索引并进行健康探活...")
     print("=" * 60)
 
     multi_urls = []
@@ -257,7 +293,6 @@ def sync():
             "url": item["url"],
             "name": item["name"]
         })
-        # 如果有加速镜像，额外追加一条免翻镜像备用
         if "mirror" in item:
             multi_urls.append({
                 "url": item["mirror"],
@@ -267,7 +302,7 @@ def sync():
     multi_file = os.path.join(DIST_DIR, "multi.json")
     with open(multi_file, "w", encoding="utf-8") as f:
         json.dump({"urls": multi_urls}, f, ensure_ascii=False, indent=2)
-    print(f"\n[+] 生成多仓配置: {multi_file} (共 {len(multi_urls)} 条线路)")
+    print(f"\n[+] 生成纯电视多仓配置: {multi_file} (共 {len(multi_urls)} 条线路)")
 
     # 写入健康探活状态 upstream_status.json
     status_file = os.path.join(DIST_DIR, "upstream_status.json")
@@ -280,7 +315,7 @@ def sync():
     print(f"[+] 生成健康探活报告: {status_file}")
 
     print("\n" + "=" * 60)
-    print("✅ 全部同步与生成完毕！")
+    print("✅ 纯净电视端 (带 Categories) 同步与生成完毕！")
     print("=" * 60)
 
 if __name__ == "__main__":
