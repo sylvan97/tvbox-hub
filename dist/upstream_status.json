@@ -1,86 +1,62 @@
 {
-  "last_updated": "2026-10-23 17:01:30",
-  "total": 10,
+  "last_updated": "2026-10-23 17:26:19",
+  "total": 7,
   "results": [
     {
       "name": "📦 Qist 开源维护整合仓",
       "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 26,
-      "check_time": "2026-10-23 17:01:21"
+      "latency_ms": 23,
+      "check_time": "2026-10-23 17:26:16"
     },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 69,
-      "check_time": "2026-10-23 17:01:21"
+      "latency_ms": 75,
+      "check_time": "2026-10-23 17:26:16"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
       "url": "http://xn--sss604efuw.top/tv",
       "status": "online",
       "code": 200,
-      "latency_ms": 75,
-      "check_time": "2026-10-23 17:01:21"
+      "latency_ms": 101,
+      "check_time": "2026-10-23 17:26:16"
     },
     {
-      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错)",
-      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 86,
-      "check_time": "2026-10-23 17:01:21"
-    },
-    {
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐)",
+      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 106,
-      "check_time": "2026-10-23 17:01:21"
+      "latency_ms": 122,
+      "check_time": "2026-10-23 17:26:16"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 957,
-      "check_time": "2026-10-23 17:01:22"
+      "latency_ms": 472,
+      "check_time": "2026-10-23 17:26:16"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 3503,
-      "check_time": "2026-10-23 17:01:25"
+      "latency_ms": 3499,
+      "check_time": "2026-10-23 17:26:19"
     },
     {
       "name": "🐟 摸鱼儿 影视专线",
       "url": "http://xn--070az07b.xn--fiq52l96f.top",
       "status": "offline",
       "error": "<urlopen error [Errno -2] Name or service not known>",
-      "latency_ms": 18,
-      "check_time": "2026-10-23 17:01:21"
-    },
-    {
-      "name": "👌 OK影视 官方线路",
-      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
-      "status": "offline",
-      "error": "HTTP Error 401: Unauthorized",
-      "latency_ms": 661,
-      "check_time": "2026-10-23 17:01:22"
-    },
-    {
-      "name": "🥑 巧技 备用专线",
-      "url": "http://pandown.pro/tvbox/tvbox.json",
-      "status": "offline",
-      "error": "<urlopen error timed out>",
-      "latency_ms": 8274,
-      "check_time": "2026-10-23 17:01:30"
+      "latency_ms": 24,
+      "check_time": "2026-10-23 17:26:16"
     }
   ]
 }
