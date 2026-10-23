@@ -1,0 +1,78 @@
+{
+  "last_updated": "2026-10-24 00:23:32",
+  "total": 9,
+  "results": [
+    {
+      "name": "🐱 肥猫 官方主力线",
+      "url": "http://xn--z7x900a.live",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 769,
+      "check_time": "2026-10-24 00:23:24"
+    },
+    {
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 851,
+      "check_time": "2026-10-24 00:23:24"
+    },
+    {
+      "name": "☁️ 高天流云 精选配置仓",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 881,
+      "check_time": "2026-10-24 00:23:24"
+    },
+    {
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://xn--sss604efuw.top/tv",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 1812,
+      "check_time": "2026-10-24 00:23:25"
+    },
+    {
+      "name": "🚗 运输车 聚合专线",
+      "url": "https://weixine.net/ysc.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 6271,
+      "check_time": "2026-10-24 00:23:30"
+    },
+    {
+      "name": "👌 OK影视 官方线路",
+      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
+      "status": "offline",
+      "error": "HTTP Error 401: Unauthorized",
+      "latency_ms": 190,
+      "check_time": "2026-10-24 00:23:24"
+    },
+    {
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)",
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "status": "offline",
+      "error": "HTTP Error 404: Not Found",
+      "latency_ms": 1296,
+      "check_time": "2026-10-24 00:23:24"
+    },
+    {
+      "name": "🐟 摸鱼儿 影视专线",
+      "url": "http://xn--070az07b.xn--fiq52l96f.top",
+      "status": "offline",
+      "error": "HTTP Error 502: Bad Gateway",
+      "latency_ms": 1802,
+      "check_time": "2026-10-24 00:23:25"
+    },
+    {
+      "name": "🥑 巧技 备用专线",
+      "url": "http://pandown.pro/tvbox/tvbox.json",
+      "status": "offline",
+      "error": "timed out",
+      "latency_ms": 8010,
+      "check_time": "2026-10-24 00:23:32"
+    }
+  ]
+}

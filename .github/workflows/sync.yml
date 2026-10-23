@@ -1,0 +1,47 @@
+name: Auto Sync & Health Check
+
+on:
+  schedule:
+    # 每天北京时间凌晨 04:00 自动执行 (UTC 20:00)
+    - cron: '0 20 * * *'
+  workflow_dispatch: # 支持在 GitHub Actions 页面手动一键触发
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 设置 Python 运行环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 执行自动化同步与探活脚本
+        run: |
+          python scripts/sync.py
+
+      - name: 提交更新到仓库
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dist/
+          if git diff --staged --quiet; then
+            echo "没有检测到内容变化，跳过提交。"
+          else
+            git commit -m "chore(auto): 定时同步上游源并更新探活报告 [skip ci]"
+            git push
+          fi

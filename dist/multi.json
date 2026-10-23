@@ -1,0 +1,52 @@
+{
+  "urls": [
+    {
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)"
+    },
+    {
+      "url": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐) (加速节点)"
+    },
+    {
+      "url": "http://饭太硬.top/tv",
+      "name": "🍚 饭太硬 官方主力线"
+    },
+    {
+      "url": "http://肥猫.live",
+      "name": "🐱 肥猫 官方主力线"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "name": "📦 Qist 开源维护整合仓"
+    },
+    {
+      "url": "https://ghfast.top/https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "name": "📦 Qist 开源维护整合仓 (加速节点)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "name": "☁️ 高天流云 精选配置仓"
+    },
+    {
+      "url": "https://ghfast.top/https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "name": "☁️ 高天流云 精选配置仓 (加速节点)"
+    },
+    {
+      "url": "http://我不是.摸鱼儿.top",
+      "name": "🐟 摸鱼儿 影视专线"
+    },
+    {
+      "url": "https://weixine.net/ysc.json",
+      "name": "🚗 运输车 聚合专线"
+    },
+    {
+      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
+      "name": "👌 OK影视 官方线路"
+    },
+    {
+      "url": "http://pandown.pro/tvbox/tvbox.json",
+      "name": "🥑 巧技 备用专线"
+    }
+  ]
+}

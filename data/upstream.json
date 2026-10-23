@@ -1,0 +1,85 @@
+{
+  "description": "TVBox / FongMi 壳源分离订阅仓库 - 上游跟踪源配置",
+  "version": "1.0.0",
+  "updated_at": "2026-10-24",
+  "multi_warehouses": [
+    {
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)",
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "description": "本仓库本地化镜像维护的精选单仓，去广告、高可用、自动探活"
+    },
+    {
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://饭太硬.top/tv",
+      "puny_url": "http://xn--sss604efuw.top/tv",
+      "backup_url": "https://raw.liucn.cc/box/m.json",
+      "description": "全网最活跃的主力源之一，涵盖主流影视站点与阿里/夸克网盘"
+    },
+    {
+      "name": "🐱 肥猫 官方主力线",
+      "url": "http://肥猫.live",
+      "puny_url": "http://xn--z7x900a.live",
+      "backup_url": "http://肥猫.com",
+      "description": "老牌优质源，资源全面，分类清晰"
+    },
+    {
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "mirror": "https://ghfast.top/https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "description": "GitHub 长期维护的高分开源聚合配置"
+    },
+    {
+      "name": "☁️ 高天流云 精选配置仓",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "mirror": "https://ghfast.top/https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "description": "针对 FongMi 与 TVBox 深度调优的配置"
+    },
+    {
+      "name": "🐟 摸鱼儿 影视专线",
+      "url": "http://我不是.摸鱼儿.top",
+      "puny_url": "http://xn--070az07b.xn--fiq52l96f.top",
+      "description": "聚合各路影视与优质自建解析"
+    },
+    {
+      "name": "🚗 运输车 聚合专线",
+      "url": "https://weixine.net/ysc.json",
+      "description": "稳定高速的备用订阅线路"
+    },
+    {
+      "name": "👌 OK影视 官方线路",
+      "url": "https://jihulab.com/okcaptain/kko/raw/main/ok.txt",
+      "description": "极狐 GitLab 镜像托管的 OK 影视专属配置"
+    },
+    {
+      "name": "🥑 巧技 备用专线",
+      "url": "http://pandown.pro/tvbox/tvbox.json",
+      "description": "网盘资源与常规站点聚合"
+    }
+  ],
+  "upstream_single_sources": [
+    {
+      "id": "qist_0821",
+      "name": "Qist 0821 主源",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "jar_url": "https://raw.githubusercontent.com/qist/tvbox/master/jar/fan.txt"
+    },
+    {
+      "id": "gao_0821",
+      "name": "高天流云 0821 主源",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "jar_url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/jar/fan.txt"
+    }
+  ],
+  "live_sources": [
+    {
+      "name": "范明明 IPv6 央卫视高清直播",
+      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+      "mirror": "https://live.fanmingming.com/tv/m3u/ipv6.m3u"
+    },
+    {
+      "name": "YanG-1989 综合直播源",
+      "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"
+    }
+  ]
+}
