@@ -16,12 +16,8 @@
 
 > 💡 **使用提示**：在电视盒子或手机 APP 设置中的「配置地址 / 接口」填入以下任一链接即可。如果直连网络不稳定，请优先使用 **加速节点**。
 
-### 1. 🌟 综合精选主仓（强烈推荐，主力首选）
+### 1. 🌟 综合精选主仓（全端通用，电视首选）
 *已内置完整爬虫依赖包、豆瓣热榜、优质磁力解析、网盘检索与高清直播*
-* **GitHub 直连**：
-  ```text
-  https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json
-  ```
 * **国内极速加速节点 1 (GHFast)**：
   ```text
   https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json
@@ -30,10 +26,27 @@
   ```text
   https://cdn.jsdelivr.net/gh/sylvan97/tvbox-hub@main/dist/index.json
   ```
+* **GitHub 直连**：
+  ```text
+  https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json
+  ```
 
 ---
 
-### 2. 🗂️ 聚合多仓（一键切换全网知名源）
+### 2. 🖥️ PC 电脑桌面专用仓（FreeBox / 电脑端推荐，杜绝弹错）
+*针对 Windows / Mac 原生桌面播放器（如 FreeBox、ZY-Player）特别优化，剔除 Android Dalvik 专属的 `csp_` 爬虫，精选 44 个高性能 CMS 影视站与通用 JS 规则，秒开无弹错*
+* **国内极速加速节点**：
+  ```text
+  https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json
+  ```
+* **GitHub 直连**：
+  ```text
+  https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json
+  ```
+
+---
+
+### 3. 🗂️ 聚合多仓（一键切换全网知名源）
 *聚合自建仓、饭太硬、肥猫、运输车、摸鱼儿、Qist 等全网顶级源，支持在播放器内随时切换*
 * **GitHub 直连**：
   ```text

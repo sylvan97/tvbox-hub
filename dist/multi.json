@@ -2,11 +2,19 @@
   "urls": [
     {
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)"
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐)"
     },
     {
       "url": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐) (加速节点)"
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐) (加速节点)"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
+      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错)"
+    },
+    {
+      "url": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
+      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错) (加速节点)"
     },
     {
       "url": "http://饭太硬.top/tv",

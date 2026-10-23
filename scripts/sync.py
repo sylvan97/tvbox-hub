@@ -28,6 +28,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 DIST_DIR = os.path.join(BASE_DIR, "dist")
 JAR_DIR = os.path.join(DIST_DIR, "jar")
+LIB_DIR = os.path.join(DIST_DIR, "lib")
+JS_DIR = os.path.join(DIST_DIR, "js")
+
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 TVBox/1.0"
 
@@ -78,6 +81,8 @@ def test_url_health(name: str, url: str) -> dict:
 def sync():
     os.makedirs(DIST_DIR, exist_ok=True)
     os.makedirs(JAR_DIR, exist_ok=True)
+    os.makedirs(LIB_DIR, exist_ok=True)
+    os.makedirs(JS_DIR, exist_ok=True)
 
     upstream_file = os.path.join(DATA_DIR, "upstream.json")
     if not os.path.exists(upstream_file):
@@ -88,10 +93,10 @@ def sync():
         upstream_data = json.load(f)
 
     print("=" * 60)
-    print("▶ 1. 开始同步上游配置与核心 Spider Jar...")
+    print("▶ 1. 开始同步上游配置、核心 Spider Jar 与 JS 依赖库...")
     print("=" * 60)
 
-    # 1. 下载 Spider Jar
+    # 1.1 下载 Spider Jar
     jar_target_path = os.path.join(JAR_DIR, "fan.txt")
     jar_downloaded = False
     jar_md5 = ""
@@ -103,7 +108,7 @@ def sync():
         try:
             print(f"[*] 正在拉取 Spider Jar: {jar_url}")
             jar_bytes = fetch_content(jar_url, timeout=20)
-            if len(jar_bytes) > 100000:  # 大于 100KB 则视为有效 jar
+            if len(jar_bytes) > 100000:
                 with open(jar_target_path, "wb") as f:
                     f.write(jar_bytes)
                 jar_md5 = hashlib.md5(jar_bytes).hexdigest()
@@ -117,6 +122,22 @@ def sync():
         with open(jar_target_path, "rb") as f:
             jar_md5 = hashlib.md5(f.read()).hexdigest()
         print(f"[!] 使用本地已有 Jar, MD5: {jar_md5}")
+
+    # 1.2 镜像通用 JS 爬虫库 (供 PC 端 FreeBox / 桌面端原生加载)
+    js_libs = [
+        ("https://raw.githubusercontent.com/qist/tvbox/master/lib/drpy2.min.js", os.path.join(LIB_DIR, "drpy2.min.js")),
+        ("https://raw.githubusercontent.com/qist/tvbox/master/js/drpy.js", os.path.join(JS_DIR, "drpy.js")),
+    ]
+    for lib_url, lib_dest in js_libs:
+        try:
+            if not os.path.exists(lib_dest):
+                print(f"[*] 正在镜像 JS 依赖库: {lib_url}")
+                lib_data = fetch_content(lib_url, timeout=15)
+                with open(lib_dest, "wb") as f:
+                    f.write(lib_data)
+                print(f"[+] 成功缓存 JS 库: {lib_dest}")
+        except Exception as e:
+            print(f"[-] 缓存 JS 库失败 ({lib_url}): {e}")
 
     # 2. 拉取主源并构建 index.json
     base_config = None
@@ -144,7 +165,6 @@ def sync():
             "rules": []
         }
     else:
-        # 重写 spider 引用为本仓库的本地相对路径 (TVBox / 蜂蜜支持相对路径自动解析)
         if jar_md5:
             base_config["spider"] = f"./jar/fan.txt;md5;{jar_md5}"
         else:
@@ -153,20 +173,39 @@ def sync():
         base_config["wallpaper"] = "https://bing.img.run/rand.php"
         base_config["warningText"] = "TVBox-Hub 自动维护节点，仅供学习交流使用"
 
-    # 3. 写入 dist/index.json
+        # 排序优化：
+        # 1. CMS 采集站 (type 0/1)：纯 HTTP JSON/XML，全端 100% 秒开，排在最前
+        # 2. JS 规则站 (drpy/js)：跨平台脚本支持
+        # 3. Android 专属 (csp_)：保留在后供电视端盒子使用
+        original_sites = base_config.get("sites", [])
+        cms_sites = [s for s in original_sites if s.get("type") in [0, 1]]
+        js_sites = [s for s in original_sites if not str(s.get("api", "")).startswith("csp_") and s.get("type") not in [0, 1]]
+        android_sites = [s for s in original_sites if str(s.get("api", "")).startswith("csp_")]
+
+        base_config["sites"] = cms_sites + js_sites + android_sites
+
+    # 3. 写入综合主仓 dist/index.json
     index_file = os.path.join(DIST_DIR, "index.json")
     with open(index_file, "w", encoding="utf-8") as f:
         json.dump(base_config, f, ensure_ascii=False, indent=2)
-    print(f"[+] 生成综合主仓配置: {index_file}")
+    print(f"[+] 生成全端综合主仓 (通用站点已置顶): {index_file}")
 
-    # 4. 生成极速精简版 dist/lite.json (保留搜索和前 30 个核心站点)
+    # 4. 生成 PC 专属优化仓 dist/pc.json (过滤所有安卓专用的 csp_ 爬虫，100% PC 兼容)
+    pc_config = dict(base_config)
+    pc_config["sites"] = cms_sites + js_sites
+    pc_file = os.path.join(DIST_DIR, "pc.json")
+    with open(pc_file, "w", encoding="utf-8") as f:
+        json.dump(pc_config, f, ensure_ascii=False, indent=2)
+    print(f"[+] 生成 PC 桌面专用仓: {pc_file} (精选 {len(pc_config['sites'])} 个 PC 原生兼容站点)")
+
+    # 5. 生成极速精简版 dist/lite.json
     lite_config = dict(base_config)
     if "sites" in base_config:
         lite_config["sites"] = base_config["sites"][:30]
     lite_file = os.path.join(DIST_DIR, "lite.json")
     with open(lite_file, "w", encoding="utf-8") as f:
         json.dump(lite_config, f, ensure_ascii=False, indent=2)
-    print(f"[+] 生成极速精简配置: {lite_file} (保留 {len(lite_config.get('sites', []))} 个站点)")
+    print(f"[+] 生成极速精简配置: {lite_file}")
 
     # 5. 同步直播源 dist/live.m3u
     print("\n" + "=" * 60)

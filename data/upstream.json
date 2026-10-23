@@ -4,10 +4,16 @@
   "updated_at": "2026-10-24",
   "multi_warehouses": [
     {
-      "name": "🚀 TVBox-Hub 聚合精选自建仓 (推荐)",
+      "name": "🚀 TVBox-Hub 聚合精选自建仓 (电视推荐)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "description": "本仓库本地化镜像维护的精选单仓，去广告、高可用、自动探活"
+    },
+    {
+      "name": "🖥️ TVBox-Hub PC桌面专用仓 (FreeBox免报错)",
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
+      "mirror": "https://ghfast.top/https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/pc.json",
+      "description": "纯净 CMS 与 JS 规则，专为 Windows/Mac 桌面播放器定制，100% 兼容无安卓弹错"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
