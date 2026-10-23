@@ -1,62 +1,54 @@
 {
-  "last_updated": "2026-10-23 17:26:19",
-  "total": 7,
+  "last_updated": "2026-10-23 17:43:56",
+  "total": 6,
   "results": [
-    {
-      "name": "📦 Qist 开源维护整合仓",
-      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 23,
-      "check_time": "2026-10-23 17:26:16"
-    },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 75,
-      "check_time": "2026-10-23 17:26:16"
+      "latency_ms": 82,
+      "check_time": "2026-10-23 17:43:53"
     },
     {
-      "name": "🍚 饭太硬 官方主力线",
-      "url": "http://xn--sss604efuw.top/tv",
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 101,
-      "check_time": "2026-10-23 17:26:16"
+      "latency_ms": 112,
+      "check_time": "2026-10-23 17:43:53"
     },
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 122,
-      "check_time": "2026-10-23 17:26:16"
+      "latency_ms": 169,
+      "check_time": "2026-10-23 17:43:53"
+    },
+    {
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://xn--sss604efuw.top/tv",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 219,
+      "check_time": "2026-10-23 17:43:53"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 472,
-      "check_time": "2026-10-23 17:26:16"
+      "latency_ms": 328,
+      "check_time": "2026-10-23 17:43:53"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 3499,
-      "check_time": "2026-10-23 17:26:19"
-    },
-    {
-      "name": "🐟 摸鱼儿 影视专线",
-      "url": "http://xn--070az07b.xn--fiq52l96f.top",
-      "status": "offline",
-      "error": "<urlopen error [Errno -2] Name or service not known>",
-      "latency_ms": 24,
-      "check_time": "2026-10-23 17:26:16"
+      "latency_ms": 3266,
+      "check_time": "2026-10-23 17:43:56"
     }
   ]
 }
