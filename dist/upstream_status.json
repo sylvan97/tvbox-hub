@@ -1,54 +1,54 @@
 {
-  "last_updated": "2026-10-26 23:27:27",
+  "last_updated": "2026-10-27 23:19:59",
   "total": 6,
   "results": [
-    {
-      "name": "📦 Qist 开源维护整合仓",
-      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 109,
-      "check_time": "2026-10-26 23:27:24"
-    },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 114,
-      "check_time": "2026-10-26 23:27:24"
-    },
-    {
-      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
-      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 148,
-      "check_time": "2026-10-26 23:27:24"
+      "latency_ms": 123,
+      "check_time": "2026-10-27 23:19:57"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
       "url": "http://xn--sss604efuw.top/tv",
       "status": "online",
       "code": 200,
-      "latency_ms": 177,
-      "check_time": "2026-10-26 23:27:24"
+      "latency_ms": 230,
+      "check_time": "2026-10-27 23:19:57"
+    },
+    {
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 318,
+      "check_time": "2026-10-27 23:19:57"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 413,
-      "check_time": "2026-10-26 23:27:24"
+      "latency_ms": 332,
+      "check_time": "2026-10-27 23:19:57"
+    },
+    {
+      "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
+      "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 382,
+      "check_time": "2026-10-27 23:19:57"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 3525,
-      "check_time": "2026-10-26 23:27:27"
+      "latency_ms": 2479,
+      "check_time": "2026-10-27 23:19:59"
     }
   ]
 }
