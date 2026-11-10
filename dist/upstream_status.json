@@ -1,54 +1,54 @@
 {
-  "last_updated": "2026-11-08 23:16:40",
+  "last_updated": "2026-11-10 02:27:46",
   "total": 6,
   "results": [
     {
-      "name": "📦 Qist 开源维护整合仓",
-      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://xn--sss604efuw.top/tv",
       "status": "online",
       "code": 200,
-      "latency_ms": 134,
-      "check_time": "2026-11-08 23:16:38"
-    },
-    {
-      "name": "☁️ 高天流云 精选配置仓",
-      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 146,
-      "check_time": "2026-11-08 23:16:38"
+      "latency_ms": 62,
+      "check_time": "2026-11-10 02:27:44"
     },
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 186,
-      "check_time": "2026-11-08 23:16:38"
+      "latency_ms": 81,
+      "check_time": "2026-11-10 02:27:44"
     },
     {
-      "name": "🍚 饭太硬 官方主力线",
-      "url": "http://xn--sss604efuw.top/tv",
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 277,
-      "check_time": "2026-11-08 23:16:38"
+      "latency_ms": 82,
+      "check_time": "2026-11-10 02:27:44"
+    },
+    {
+      "name": "☁️ 高天流云 精选配置仓",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 87,
+      "check_time": "2026-11-10 02:27:44"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 419,
-      "check_time": "2026-11-08 23:16:38"
+      "latency_ms": 589,
+      "check_time": "2026-11-10 02:27:44"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 2320,
-      "check_time": "2026-11-08 23:16:40"
+      "latency_ms": 2463,
+      "check_time": "2026-11-10 02:27:46"
     }
   ]
 }
