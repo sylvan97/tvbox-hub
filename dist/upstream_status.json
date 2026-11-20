@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 01:34:00",
+  "last_updated": "2026-11-20 01:30:15",
   "total": 6,
   "results": [
     {
@@ -7,48 +7,48 @@
       "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 100,
-      "check_time": "2026-11-19 01:33:58"
+      "latency_ms": 109,
+      "check_time": "2026-11-20 01:30:12"
     },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 115,
-      "check_time": "2026-11-19 01:33:58"
+      "latency_ms": 137,
+      "check_time": "2026-11-20 01:30:12"
     },
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 179,
-      "check_time": "2026-11-19 01:33:58"
+      "latency_ms": 138,
+      "check_time": "2026-11-20 01:30:12"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
       "url": "http://xn--sss604efuw.top/tv",
       "status": "online",
       "code": 200,
-      "latency_ms": 264,
-      "check_time": "2026-11-19 01:33:59"
+      "latency_ms": 168,
+      "check_time": "2026-11-20 01:30:12"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 470,
-      "check_time": "2026-11-19 01:33:59"
+      "latency_ms": 439,
+      "check_time": "2026-11-20 01:30:12"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 1910,
-      "check_time": "2026-11-19 01:34:00"
+      "latency_ms": 2646,
+      "check_time": "2026-11-20 01:30:15"
     }
   ]
 }
