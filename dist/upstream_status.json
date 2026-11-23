@@ -1,54 +1,54 @@
 {
-  "last_updated": "2026-11-21 23:59:29",
+  "last_updated": "2026-11-23 00:32:07",
   "total": 6,
   "results": [
-    {
-      "name": "🍚 饭太硬 官方主力线",
-      "url": "http://xn--sss604efuw.top/tv",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 38,
-      "check_time": "2026-11-21 23:59:25"
-    },
     {
       "name": "📦 Qist 开源维护整合仓",
       "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 43,
-      "check_time": "2026-11-21 23:59:25"
+      "latency_ms": 103,
+      "check_time": "2026-11-23 00:32:04"
     },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 58,
-      "check_time": "2026-11-21 23:59:25"
+      "latency_ms": 130,
+      "check_time": "2026-11-23 00:32:04"
     },
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 112,
-      "check_time": "2026-11-21 23:59:25"
+      "latency_ms": 145,
+      "check_time": "2026-11-23 00:32:04"
+    },
+    {
+      "name": "🍚 饭太硬 官方主力线",
+      "url": "http://xn--sss604efuw.top/tv",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 150,
+      "check_time": "2026-11-23 00:32:04"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 428,
-      "check_time": "2026-11-21 23:59:26"
+      "latency_ms": 327,
+      "check_time": "2026-11-23 00:32:04"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 3491,
-      "check_time": "2026-11-21 23:59:29"
+      "latency_ms": 2440,
+      "check_time": "2026-11-23 00:32:07"
     }
   ]
 }
