@@ -1,54 +1,54 @@
 {
-  "last_updated": "2026-11-23 00:32:07",
+  "last_updated": "2026-11-24 04:30:28",
   "total": 6,
   "results": [
-    {
-      "name": "📦 Qist 开源维护整合仓",
-      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
-      "status": "online",
-      "code": 200,
-      "latency_ms": 103,
-      "check_time": "2026-11-23 00:32:04"
-    },
     {
       "name": "☁️ 高天流云 精选配置仓",
       "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0821.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 130,
-      "check_time": "2026-11-23 00:32:04"
+      "latency_ms": 107,
+      "check_time": "2026-11-24 04:30:26"
+    },
+    {
+      "name": "📦 Qist 开源维护整合仓",
+      "url": "https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
+      "status": "online",
+      "code": 200,
+      "latency_ms": 127,
+      "check_time": "2026-11-24 04:30:26"
     },
     {
       "name": "🚀 TVBox-Hub 纯净电视精选主仓 (本地镜像维护)",
       "url": "https://raw.githubusercontent.com/sylvan97/tvbox-hub/main/dist/index.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 145,
-      "check_time": "2026-11-23 00:32:04"
+      "latency_ms": 230,
+      "check_time": "2026-11-24 04:30:26"
     },
     {
       "name": "🍚 饭太硬 官方主力线",
       "url": "http://xn--sss604efuw.top/tv",
       "status": "online",
       "code": 200,
-      "latency_ms": 150,
-      "check_time": "2026-11-23 00:32:04"
+      "latency_ms": 241,
+      "check_time": "2026-11-24 04:30:26"
     },
     {
       "name": "🐱 肥猫 官方主力线",
       "url": "http://xn--z7x900a.live",
       "status": "online",
       "code": 200,
-      "latency_ms": 327,
-      "check_time": "2026-11-23 00:32:04"
+      "latency_ms": 336,
+      "check_time": "2026-11-24 04:30:26"
     },
     {
       "name": "🚗 运输车 聚合专线",
       "url": "https://weixine.net/ysc.json",
       "status": "online",
       "code": 200,
-      "latency_ms": 2440,
-      "check_time": "2026-11-23 00:32:07"
+      "latency_ms": 2331,
+      "check_time": "2026-11-24 04:30:28"
     }
   ]
 }
